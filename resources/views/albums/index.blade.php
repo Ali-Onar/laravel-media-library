@@ -21,7 +21,16 @@
                             <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{$album->id}}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{$album->title}}</td>
-                        <td class="px-6 py-4 text-right text-sm">Manage</td>
+                        <td class="px-6 py-4 text-right text-sm">
+                            <div class="flex justify-center">
+                                <a href={{ route('albums.edit', $album->id) }} class="py-1 px-4 text-lg rounded-lg m-2 bg-green-500 hover:bg-green-700">Edit</a>
+                                <form action="{{ route('albums.destroy', $album->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <x-button class="bg-red-500 hover:bg-red-700">Delete</x-button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
 
                         @endforeach

@@ -2,7 +2,7 @@
     <x-slot name="header">
         Create Post
     </x-slot>
-    <div class="container mx-auto m-4 p-4">
+    <div class="container mx-auto m-4 p-4 bg-white shadow-md rounded-lg">
         <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
             <form method="POST" action="{{ route('albums.store') }}">
                 @csrf
