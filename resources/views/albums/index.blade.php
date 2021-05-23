@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Id</th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Title</th>
-                        <th scope="col" class="relative px-6 py-3">Edit</th>
+                        <th scope="col" class="relative px-6 py-3">Manage</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -20,10 +20,12 @@
                         @foreach ($albums as $album)
                             <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{$album->id}}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{$album->title}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a class="text-indigo-500 hover:text-indigo-700 font-semibold" href="{{ route('albums.show', $album->id) }}">{{$album->title}}</a>
+                        </td>
                         <td class="px-6 py-4 text-right text-sm">
                             <div class="flex justify-center">
-                                <a href={{ route('albums.edit', $album->id) }} class="py-1 px-4 text-lg rounded-lg m-2 bg-green-500 hover:bg-green-700">Edit</a>
+                                <a href={{ route('albums.edit', $album->id) }} class="py-1 px-4 text-lg rounded-lg mr-2 bg-green-500 hover:bg-green-700">Edit</a>
                                 <form action="{{ route('albums.destroy', $album->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')

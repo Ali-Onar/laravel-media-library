@@ -15,3 +15,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/albums', AlbumController::class)->middleware('auth');
+Route::post('albums/{album}/upload', [AlbumController::class, 'upload'])->name('albums.upload')->middleware('auth');

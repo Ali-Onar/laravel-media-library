@@ -48,9 +48,9 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Album $album)
     {
-        //
+        return view('albums.show', compact('album'));
     }
 
     /**
@@ -88,6 +88,14 @@ class AlbumController extends Controller
     public function destroy(Album $album)
     {
         $album->delete();
+        return redirect()->back();
+    }
+
+    public function upload(Request $request, Album $album)
+    {
+        if ($request->has('image')) {
+            $album->addMedia($request->image)->toMediaCollection();
+        }
         return redirect()->back();
     }
 }
