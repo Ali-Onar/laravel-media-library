@@ -50,7 +50,8 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        return view('albums.show', compact('album'));
+        $photos = $album->getMedia();
+        return view('albums.show', compact('album', 'photos'));
     }
 
     /**
