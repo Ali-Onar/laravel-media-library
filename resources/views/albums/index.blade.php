@@ -16,13 +16,15 @@
                     </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    <tr></tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">id</td>
-                        <td class="px-6 py-4 whitespace-nowrap">title</td>
+
+                        @foreach ($albums as $album)
+                            <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{$album->id}}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{$album->title}}</td>
                         <td class="px-6 py-4 text-right text-sm">Manage</td>
                     </tr>
-                    <!-- More items... -->
+
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="m-2 p-2">Pagination</div>

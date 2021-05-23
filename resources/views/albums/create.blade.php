@@ -4,7 +4,8 @@
     </x-slot>
     <div class="container mx-auto m-4 p-4">
         <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
-            <form enctype="multipart/form-data">
+            <form method="POST" action="{{ route('albums.store') }}">
+                @csrf
                 <div class="sm:col-span-6">
                 <label for="title" class="block text-sm font-medium text-gray-700"> Post Title </label>
                 <div class="mt-1">
