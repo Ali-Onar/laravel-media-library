@@ -18,7 +18,19 @@
         <div class="mt-4">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
                 @foreach ($photos as $photo)
-                    <img src="{{ $photo->getUrl() }}">
+                <div class="bg-gray-300 p-2">
+                    <a class="block relative h-56 rounded overflow-hidden">
+                        <img alt="gallery" class="object-cover object-center w-full h-full block" src="{{ $photo->getUrl('thumb') }}">
+                    </a>
+                    <div class="flex justify-between mt-4 p-4">
+                        <a class="m-2 p-2 bg-blue-500 hover:bg-blue-700 rounded-lg" href="{{ route('album.image.show', [$album->id, $photo->id]) }}">Full Image</a>
+                        <form method="post" action="{{ route('album.image.destroy', [$album->id, $photo->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <x-button class="m-2 b-2 rounded-lg bg-red-500 hover:bg-red-700">Delete</x-button>
+                        </form>
+                    </div>
+                </div>
                 @endforeach
             </div>
         </div>
